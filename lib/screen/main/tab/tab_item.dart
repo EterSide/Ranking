@@ -4,10 +4,13 @@ import 'package:fast_app_base/screen/main/tab/home/f_home.dart';
 import 'package:fast_app_base/screen/main/tab/ranking/f_ranking.dart';
 import 'package:flutter/material.dart';
 
+import 'score/f_score.dart';
+
 enum TabItem {
   home(Icons.home, '홈', HomeFragment()),
   favorite(Icons.star, '즐겨찾기', FavoriteFragment(isShowBackButton: false)),
-  ranking(Icons.insert_chart_outlined, '랭킹', RankingFragment());
+  ranking(Icons.insert_chart_outlined, '랭킹', RankingFragment()),
+  score(Icons.add_chart_outlined, '전적', ScoreFragment());
 
   final IconData activeIcon;
   final IconData inActiveIcon;
