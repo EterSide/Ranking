@@ -27,7 +27,12 @@ class AddPlayerFragment extends StatelessWidget {
             TextButton(
                 onPressed: () {
 
-                  rankings.addRanking(Ranking(name: name.text));
+                  if (rankingsList.length == null) {
+                    rankings.addRanking(Ranking(name: name.text));
+                  } else {
+                    rankings.addRanking(Ranking(
+                        name: name.text, rank: rankingsList.length + 1));
+                  }
 
                   print(rankingsList.toList());
 

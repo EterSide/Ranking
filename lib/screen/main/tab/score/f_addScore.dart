@@ -3,14 +3,30 @@ import 'package:fast_app_base/hive/view_model/ranking_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AddScoreFragment extends StatelessWidget {
+class AddScoreFragment extends StatefulWidget {
   const AddScoreFragment({super.key});
 
+  @override
+  State<AddScoreFragment> createState() => _AddScoreFragmentState();
+}
+
+class _AddScoreFragmentState extends State<AddScoreFragment> {
   @override
   Widget build(BuildContext context) {
     final name = TextEditingController();
     final rankings = Provider.of<RankingViewModel>(context);
     final rankingsList = rankings.rankings;
+
+    String? _selectedValue;
+
+
+    _getNameList() {
+      var nameList = [];
+      for (int i = 0; i < rankingsList.length; i++) {
+        nameList.add(rankingsList[i].name);
+      }
+      return nameList;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -23,15 +39,25 @@ class AddScoreFragment extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            _TextFormField(tec: name, labelText: '이름', hintText: '이름을 작성해주세요'),
+            DropdownButton(
+              value: _selectedValue,
+                hint: Text('이름'),
+                items: _getNameList()
+                    .map((e) => DropdownMenuItem(
+                          child: Text(e),
+                          value: e,
+                        ))
+                    .toList(),
+              onChanged: (value) {
+                setState(() {
+                  _selectedValue = value.toString();
+                  print(_selectedValue);
+                });
+              },
+            ),
+
             TextButton(
                 onPressed: () {
-                  if(rankingsList.length == null) {
-                    rankings.addRanking(Ranking(name: name.text));
-                  } else {
-                    rankings.addRanking(Ranking(name: name.text, rank: rankingsList.length+1));
-                  }
-
 
                   print(rankingsList.toList());
 
@@ -52,9 +78,9 @@ class _TextFormField extends StatelessWidget {
 
   const _TextFormField(
       {super.key,
-        required this.tec,
-        required this.labelText,
-        required this.hintText});
+      required this.tec,
+      required this.labelText,
+      required this.hintText});
 
   @override
   Widget build(BuildContext context) {

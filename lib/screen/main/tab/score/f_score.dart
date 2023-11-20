@@ -1,5 +1,6 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/screen/main/tab/score/f_addPlayer.dart';
+import 'package:fast_app_base/screen/main/tab/score/f_addScore.dart';
 import 'package:flutter/material.dart';
 
 class ScoreFragment extends StatelessWidget {
@@ -66,7 +67,7 @@ class ScoreFragment extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-
+              Nav.push(AddScoreFragment());
             },
             child: Text('전적등록'),
           ),
