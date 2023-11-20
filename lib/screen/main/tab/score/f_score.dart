@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 class ScoreFragment extends StatelessWidget {
   const ScoreFragment({super.key});
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -63,7 +66,7 @@ class ScoreFragment extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Nav.push(AddPlayerFragment());
+
             },
             child: Text('전적등록'),
           ),
@@ -87,3 +90,6 @@ class _Text extends StatelessWidget {
     );
   }
 }
+
+
+

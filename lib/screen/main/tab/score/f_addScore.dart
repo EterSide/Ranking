@@ -26,8 +26,12 @@ class AddScoreFragment extends StatelessWidget {
             _TextFormField(tec: name, labelText: '이름', hintText: '이름을 작성해주세요'),
             TextButton(
                 onPressed: () {
+                  if(rankingsList.length == null) {
+                    rankings.addRanking(Ranking(name: name.text));
+                  } else {
+                    rankings.addRanking(Ranking(name: name.text, rank: rankingsList.length+1));
+                  }
 
-                  rankings.addRanking(Ranking(name: name.text));
 
                   print(rankingsList.toList());
 

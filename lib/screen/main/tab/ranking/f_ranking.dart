@@ -9,6 +9,21 @@ class RankingFragment extends StatelessWidget {
   Widget build(BuildContext context) {
     final rankings = Provider.of<RankingViewModel>(context);
     final rankingsList = rankings.rankings;
+    List<DataRow> _getRankingList() {
+      List<DataRow> dataRow = [];
+      for (int i = 0; i < rankingsList.length; i++) {
+        var cells = [
+          DataCell(Text(rankingsList[i].rank.toString())),
+          DataCell(Text(rankingsList[i].name)),
+          DataCell(Text(rankingsList[i].win.toString())),
+          DataCell(Text(rankingsList[i].lose.toString())),
+          DataCell(Text(rankingsList[i].winningRate.toString())),
+        ];
+        print(cells);
+        dataRow.add(DataRow(cells: cells));
+      }
+      return dataRow;
+    }
 
     return SingleChildScrollView(
       child: Column(
@@ -24,53 +39,6 @@ class RankingFragment extends StatelessWidget {
             '랭킹',
             style: TextStyle(fontSize: 40, color: Colors.amber),
           ),
-          // ListView.builder(
-          //   itemCount: 1,
-          //   itemBuilder: (BuildContext context, index) {
-          //     return DataTable(
-          //       horizontalMargin: 10,
-          //       columns: [
-          //         DataColumn(
-          //           label: _Text(
-          //             lankList: '등수',
-          //           ),
-          //         ),
-          //         DataColumn(
-          //           label: _Text(
-          //             lankList: '이름',
-          //           ),
-          //         ),
-          //         DataColumn(
-          //           label: _Text(
-          //             lankList: '승',
-          //             color: Colors.red,
-          //           ),
-          //         ),
-          //         DataColumn(
-          //           label: _Text(
-          //             lankList: '패',
-          //             color: Colors.blue,
-          //           ),
-          //         ),
-          //         DataColumn(
-          //           label: _Text(
-          //             lankList: '승률',
-          //             color: Colors.red,
-          //           ),
-          //         ),
-          //       ],
-          //       rows: [
-          //         DataRow(cells: [
-          //           DataCell(Text(rankingsList[index].rank.toString())),
-          //           DataCell(Text(rankingsList[index].name)),
-          //           DataCell(Text(rankingsList[index].win.toString())),
-          //           DataCell(Text(rankingsList[index].lose.toString())),
-          //           DataCell(Text(rankingsList[index].winningRate.toString())),
-          //         ]),
-          //       ],
-          //     );
-          //   },
-          // ),
           DataTable(
             horizontalMargin: 10,
             columns: [
@@ -103,16 +71,13 @@ class RankingFragment extends StatelessWidget {
                 ),
               ),
             ],
-            rows: [
-              DataRow(cells: [
-                DataCell(Text(rankingsList[0].rank.toString())),
-                DataCell(Text(rankingsList[0].name)),
-                DataCell(Text(rankingsList[0].win.toString())),
-                DataCell(Text(rankingsList[0].lose.toString())),
-                DataCell(Text(rankingsList[0].winningRate.toString())),
-              ]),
-            ],
-          )
+            rows: _getRankingList(),
+          ),
+          TextButton(
+              onPressed: () {
+                print(_getRankingList().length);
+              },
+              child: Text('테스트')),
         ],
       ),
     );
