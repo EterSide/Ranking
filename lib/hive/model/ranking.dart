@@ -11,13 +11,16 @@ class Ranking extends HiveObject {
   String name;
 
   @HiveField(2)
-  int win;
+  double win;
 
   @HiveField(3)
-  int lose;
+  double lose;
 
   @HiveField(4)
   double winningRate;
+
+  @HiveField(5)
+  int point;
 
   Ranking({
     this.rank = 1,
@@ -25,5 +28,6 @@ class Ranking extends HiveObject {
     this.win = 0,
     this.lose = 0,
     this.winningRate = 0,
+    this.point = 0,
   });
 }

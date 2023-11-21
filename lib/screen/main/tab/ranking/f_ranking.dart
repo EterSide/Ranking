@@ -2,22 +2,28 @@ import 'package:fast_app_base/hive/view_model/ranking_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class RankingFragment extends StatelessWidget {
+class RankingFragment extends StatefulWidget {
   const RankingFragment({super.key});
 
+  @override
+  State<RankingFragment> createState() => _RankingFragmentState();
+}
+
+class _RankingFragmentState extends State<RankingFragment> {
   @override
   Widget build(BuildContext context) {
     final rankings = Provider.of<RankingViewModel>(context);
     final rankingsList = rankings.rankings;
+
     List<DataRow> _getRankingList() {
       List<DataRow> dataRow = [];
       for (int i = 0; i < rankingsList.length; i++) {
         var cells = [
           DataCell(Text(rankingsList[i].rank.toString())),
           DataCell(Text(rankingsList[i].name)),
-          DataCell(Text(rankingsList[i].win.toString())),
-          DataCell(Text(rankingsList[i].lose.toString())),
-          DataCell(Text(rankingsList[i].winningRate.toString())),
+          DataCell(Text(rankingsList[i].win.toStringAsFixed(0))),
+          DataCell(Text(rankingsList[i].lose.toStringAsFixed(0))),
+          DataCell(Text(rankingsList[i].winningRate.toStringAsFixed(1))),
         ];
         print(cells);
         dataRow.add(DataRow(cells: cells));
@@ -44,7 +50,7 @@ class RankingFragment extends StatelessWidget {
             columns: [
               DataColumn(
                 label: _Text(
-                  lankList: '등수',
+                  lankList: '등',
                 ),
               ),
               DataColumn(

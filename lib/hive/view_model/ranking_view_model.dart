@@ -44,4 +44,15 @@ class RankingViewModel extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<void> addScore(int key, Ranking ranking) async {
+
+    await _RankingBox.put(key, ranking);
+
+    await _loadRankings();
+
+    notifyListeners();
+
+  }
+
 }
