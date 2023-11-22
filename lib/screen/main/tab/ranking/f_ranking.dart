@@ -17,6 +17,9 @@ class _RankingFragmentState extends State<RankingFragment> {
 
     List<DataRow> _getRankingList() {
       List<DataRow> dataRow = [];
+
+      rankingsList.sort((a, b) => b.point.compareTo(a.point),);
+
       for (int i = 0; i < rankingsList.length; i++) {
         var cells = [
           DataCell(Text(rankingsList[i].rank.toString())),

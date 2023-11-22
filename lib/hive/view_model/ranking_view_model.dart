@@ -10,6 +10,8 @@ class RankingViewModel extends ChangeNotifier {
 
   List<Ranking> _rankings = [];
   List<Ranking> get rankings => _rankings;
+  List<Ranking> _rankingsScore = [];
+  List<Ranking> get rankingsScroe => _rankingsScore;
 
   RankingViewModel() {
     _openRankingBox();
@@ -30,7 +32,9 @@ class RankingViewModel extends ChangeNotifier {
   }
 
   Future<void> _loadRankings() async {
+
     final RankingsList = await _RankingBox.values.toList();
+
 
     _rankings = RankingsList;
 

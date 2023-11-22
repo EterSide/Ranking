@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 class ScoreFragment extends StatelessWidget {
   const ScoreFragment({super.key});
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
