@@ -15,46 +15,12 @@ class ScoreFragment extends StatelessWidget {
             height: 10,
           ),
           Image.asset(
-            'assets/image/icon/free-icon-ranking-1603847.png',
+            'assets/image/icon/diagram.png',
             height: MediaQuery.of(context).size.height / 6,
           ),
           Text(
-            '랭킹',
+            '전적추가',
             style: TextStyle(fontSize: 40, color: Colors.amber),
-          ),
-          DataTable(
-            horizontalMargin: 10,
-            columns: [
-              DataColumn(
-                label: _Text(
-                  lankList: '등수',
-                ),
-              ),
-              DataColumn(
-                label: _Text(
-                  lankList: '이름',
-                ),
-              ),
-              DataColumn(
-                label: _Text(
-                  lankList: '승',
-                  color: Colors.red,
-                ),
-              ),
-              DataColumn(
-                label: _Text(
-                  lankList: '패',
-                  color: Colors.blue,
-                ),
-              ),
-              DataColumn(
-                label: _Text(
-                  lankList: '승률',
-                  color: Colors.red,
-                ),
-              ),
-            ],
-            rows: [],
           ),
           TextButton(
             onPressed: () {

@@ -1,3 +1,4 @@
+import 'package:fast_app_base/hive/model/ranking.dart';
 import 'package:fast_app_base/hive/view_model/ranking_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,11 +19,26 @@ class _RankingFragmentState extends State<RankingFragment> {
     List<DataRow> _getRankingList() {
       List<DataRow> dataRow = [];
 
-      rankingsList.sort((a, b) => b.point.compareTo(a.point),);
+      rankingsList.sort(
+        (a, b) => b.point.compareTo(a.point),
+      );
+
 
       for (int i = 0; i < rankingsList.length; i++) {
+
+        // if (rankingsList[0].point != 0 &&
+        //     (rankingsList[0].win + rankingsList[0].lose) != 0 && rankingsList.length > 0) {
+        //   rankings.addScore(
+        //     rankingsList[i].key,
+        //     Ranking(name: rankingsList[i].name, rank: i+1, win: rankingsList[i].win, lose: rankingsList[i].lose, winningRate: rankingsList[i].winningRate),
+        //   );
+        // }
+
+
+        //rankings.addScore(rankingsList[i].key, Ranking(name: rankingsList[i].name, rank: i+1));
+
         var cells = [
-          DataCell(Text(rankingsList[i].rank.toString())),
+          //DataCell(Text(rankingsList[i].rank.toString())),
           DataCell(Text(rankingsList[i].name)),
           DataCell(Text(rankingsList[i].win.toStringAsFixed(0))),
           DataCell(Text(rankingsList[i].lose.toStringAsFixed(0))),
@@ -51,11 +67,11 @@ class _RankingFragmentState extends State<RankingFragment> {
           DataTable(
             horizontalMargin: 10,
             columns: [
-              DataColumn(
-                label: _Text(
-                  lankList: '등',
-                ),
-              ),
+              // DataColumn(
+              //   label: _Text(
+              //     lankList: '순위',
+              //   ),
+              // ),
               DataColumn(
                 label: _Text(
                   lankList: '이름',
